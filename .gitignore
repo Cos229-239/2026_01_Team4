@@ -1,0 +1,396 @@
+###############################################################################
+#
+# Note: You only need to look in here if you are curious or I told you to. 
+#
+###############################################################################
+
+###############################################################################
+# .gitignore 
+#
+# AUTHOR: Patrick J. Kelly
+# DATE: Dec 2025
+#
+# PURPOSE:
+# This file tells Git what NOT to upload to GitHub.
+#
+# IMPORTANT RULE (READ THIS FIRST):
+# - If YOU did not type it yourself, it probably does not belong in Git.
+# - Your computer creates LOTS of files automatically.
+# - Those files stay on your machine but will mess up other people.
+#
+# HOW TO USE THIS FILE - when starting a new repo of your own:
+# 1. COPY this file locally
+# 2. Push it to the root of your repo as: .gitignore
+# 3. COMMIT this file BEFORE writing any code
+#
+# NOTE:
+# This file is intentionally VERY broad.
+# Ignoring extra things is safe.
+# Uploading junk is NOT.
+###############################################################################
+
+
+###############################################################################
+# IMPORTANT FOR BEGINNERS (READ THIS)
+#
+# You are NOT expected to know:
+# - which files your computer creates
+# - which folders are build output
+# - which files are safe to push
+#
+# You do NOT need to look through your folders.
+# You do NOT need to decide what belongs in Git.
+#
+# This file already made those decisions FOR YOU.
+#
+# Pushing your source code and how this file helps:
+#   If YOU wrote it, Git keeps it.
+#   If your COMPUTER made it, Git ignores it.
+#
+# If Git allows the file to be committed, its probably safe.
+# If Git blocks the file, it was never meant to be shared (somebody blocked it)
+###############################################################################
+
+###############################################################################
+# First batch of files
+# OS / EDITOR JUNK
+#
+# These files are created automatically by your OPERATING SYSTEM
+# or CODE EDITOR. They are machine-specific and useless to teammates.
+#
+# macOS creates:
+#   .DS_Store       → Finder folder metadata
+#
+# Windows creates:
+#   Thumbs.db       → Image thumbnails
+#   desktop.ini    → Folder display settings
+#
+# VS Code creates:
+#   .vscode/        → Local editor preferences (not team logic)
+#
+# So we block these files from being uploaded with the followin lines:
+###############################################################################
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+
+.idea/
+*.iml
+
+
+###############################################################################
+# LOGS / TEMP FILES
+#
+# These files are created AUTOMATICALLY while programs are RUNNING.
+# You did NOT write these files — your computer did.
+#
+# What are they?
+# - .log files   → Records of program activity, errors, or crashes
+# - .tmp / .temp → Temporary working files created during execution
+# - .swp         → Editor recovery files (in case your editor crashes)
+#
+# Why we ignore them:
+# - They change constantly
+# - They are different on every machine
+# - They are NOT part of your project’s logic
+#
+# RULE:
+# NEVER commit files with these extensions
+###############################################################################
+
+*.log
+*.tmp
+*.temp
+*.swp
+
+###############################################################################
+# NODE / WEB PROJECTS
+#
+# These files are created AUTOMATICALLY by JavaScript tools
+# such as Node, npm, yarn, Vite, React, etc.
+#
+# You did NOT write these files — your tools downloaded or generated them.
+#
+# What are they?
+# - node_modules/ → Downloaded libraries (can be thousands of files)
+# - dist/ build/ out/ → Compiled output generated from your source code
+# - npm/yarn logs → Error reports created when installs fail
+# - .env files → Secrets and local machine configuration
+#
+# Why we ignore them:
+# - They can ALWAYS be regenerated
+# - They are different on every machine
+# - .env files contain PRIVATE keys and passwords
+#
+# RULE:
+# NEVER commit dependencies, build output, or .env files
+###############################################################################
+
+node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+dist/
+build/
+out/
+
+.env
+.env.local
+.env.*.local
+
+###############################################################################
+# PYTHON PROJECTS
+#
+# Python creates files AUTOMATICALLY while your code is running.
+# You did NOT write these files — Python generated them for speed.
+#
+# What are they?
+# - __pycache__/ → Cached compiled Python code
+# - *.pyc       → Compiled bytecode versions of your .py files
+# - Virtual envs → Local copies of Python and libraries
+#
+# Why we ignore them:
+# - They are rebuilt automatically
+# - They are different on every machine
+# - Virtual environments contain absolute local paths
+#
+# RULE:
+# NEVER commit Python caches or virtual environments
+###############################################################################
+
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+.venv/
+venv/
+ENV/
+env/
+
+pip-wheel-metadata/
+
+
+###############################################################################
+# JAVA / ANDROID PROJECTS
+#
+# Java and Android build tools generate files AUTOMATICALLY.
+# You did NOT write these files — the build system did.
+#
+# What are they?
+# - .gradle/      → Local Gradle cache (downloaded + computed files)
+# - build/        → Compiled output created from your source code
+# - .externalNativeBuild/ → Native build output (Android)
+# - .cxx/         → C++ build intermediates (Android NDK)
+# - *.apk / *.aab → Compiled Android app packages
+#
+# Why we ignore them:
+# - They are large and machine-specific
+# - They can ALWAYS be regenerated from source code
+# - Uploading them causes merge conflicts and broken builds
+#
+# IMPORTANT DISTINCTION:
+# - ".gradle/"  → CACHE (IGNORE THIS)
+# - "gradle/"   → WRAPPER (KEEP THIS)
+#
+# RULE:
+# NEVER commit build output or Gradle cache files
+###############################################################################
+
+.gradle/
+build/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+###############################################################################
+# FIREBASE (CONFIG + SECRETS)
+#
+# Firebase generates configuration and credential files AUTOMATICALLY.
+# You did NOT write these files — Firebase did.
+#
+# What are they?
+# - google-services.json     → Android app → Firebase project mapping
+# - serviceAccountKey.json  → Admin / server credentials
+# - firebase-adminsdk*.json → Backend service keys
+# - firebase-debug.log      → Runtime debug output
+# - firestore-debug.log     → Database debug output
+#
+# Why we ignore them:
+# - They contain PRIVATE API KEYS and credentials
+# - They identify YOUR Firebase project and account
+# - Every developer has DIFFERENT versions of these files
+#
+# What happens if you commit them:
+# - Your keys become public - and people can do very strange things (as you)
+# - Anyone can access or damage your backend
+# - The project is permanently compromised
+#
+# IMPORTANT:
+# - These files are NOT source code
+# - They are ENVIRONMENT-SPECIFIC
+# - Firebase regenerates them when you connect a project
+#
+# RULE:
+# NEVER commit Firebase config, credentials, or debug logs
+###############################################################################
+
+google-services.json
+serviceAccountKey.json
+firebase-adminsdk*.json
+firebase-debug.log
+firestore-debug.log
+
+
+###############################################################################
+# OS BUILD ARTIFACTS
+#
+# These files are generated AUTOMATICALLY by your OPERATING SYSTEM
+# during compilation, debugging, or execution.
+#
+# You did NOT write these files — your OS or compiler did.
+#
+# What are they?
+# - *.dSYM → macOS debug symbol bundles (used for crash reports)
+# - *.exe  → Windows compiled executables
+# - *.dll  → Windows dynamic libraries created at build time
+#
+# Why we ignore them:
+# - They are PLATFORM-SPECIFIC (Mac vs Windows)
+# - They are generated FROM your source code
+# - They cannot be shared safely across machines
+#
+# Important concept:
+# - Source code = what humans write
+# - Build artifacts = what machines produce
+#
+# If the file only exists AFTER you click "Run" or "Build",
+# it does NOT belong in Git.
+#
+# RULE:
+# NEVER commit OS-generated build artifacts
+###############################################################################
+
+*.dSYM
+*.exe
+*.dll
+
+
+###############################################################################
+# ARCHIVES / COMPRESSED FILES
+#
+# These files are COMPRESSED bundles of other files.
+# They are usually created to MOVE or STORE files — not to build software.
+#
+# You did NOT write these files — a compression tool created them.
+#
+# What are they?
+# - *.zip     → Common compressed archive (Windows / macOS)
+# - *.tar     → Unix archive format
+# - *.tar.gz  → Compressed tar archive (Linux / macOS)
+# - *.rar     → Proprietary compressed archive
+# - *.7z      → High-compression archive format
+#
+# Why we ignore them:
+# - They hide many files inside one file (Git can’t diff them)
+# - They duplicate content already tracked in the repo
+# - They cause huge repository size bloat
+#
+# Important rule:
+# - GitHub is for SOURCE FILES
+# - Archives are for DELIVERY or BACKUP, not collaboration
+#
+# If you need to share a compiled build or large bundle:
+# - Use GitHub Releases
+# - Or external storage (Google Drive, SSD, etc.)
+#
+# RULE:
+# NEVER commit compressed archive files
+###############################################################################
+
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+
+###############################################################################
+# GITHUB / CI (CONTINUOUS INTEGRATION)
+#
+# CI systems (like GitHub Actions) run AUTOMATICALLY on servers.
+# While they run, they may generate temporary logs or runtime files.
+#
+# What are these?
+# - Workflow log files created during CI execution
+# - Temporary artifacts produced while a job is running
+#
+# Why we ignore them:
+# - They are NOT source code
+# - They are recreated every time CI runs
+# - GitHub already stores CI logs internally
+#
+# IMPORTANT:
+# - Workflow DEFINITION files (*.yml) MUST be committed
+# - Workflow OUTPUT files (*.log) must NEVER be committed
+#
+# RULE:
+# Commit workflows, NOT workflow output
+###############################################################################
+
+.github/workflows/*.log
+
+# ===============================
+# KEEP RULES (IMPORTANT)
+#
+# These rules PREVENT over-ignoring.
+# Without these, students accidentally block real files.
+# ===============================
+
+
+
+
+########### ****** WARNING — READ THIS ****** ##############################
+#
+# The following is specificly marke to make sure it DOES get pushed
+#
+# Specific GRADLE WRAPPER Files
+#
+# These files LOCK the Gradle version for the entire team.
+# If they are missing, Android / Java projects WILL break.
+#
+# These files are NOT caches.
+# They are SOURCE-CONTROLLED ON PURPOSE.
+#
+# OTHER STUFF
+# OTHER STUFF
+# README.md - The main read‑me for your project. It tells teammates and graders what it is and how to run it, so always commit it.
+# docs/**  - Documentation: markdown, diagrams, assignment notes, etc. These are written and should be shared.
+# .github/workflows/*.yml - GitHub Actions workflows. They are automated tools for your project should you have any. 
+#
+#
+# FINAL NOTE ABOUT THE "!" SYMBOL you will see below
+# - "!" means UN-IGNORE
+# - It overrides earlier ignore rules
+# - Think: "Even if we ignored too much, KEEP THESE"
+#
+###############################################################################
+
+!gradlew
+!gradlew.bat
+!gradle/
+!gradle/wrapper/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+!README.md
+!docs/**
+!.github/workflows/*.yml

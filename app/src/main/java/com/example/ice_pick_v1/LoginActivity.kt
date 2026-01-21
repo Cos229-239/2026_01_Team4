@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Icepickv1Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginWindow(modifier = Modifier.fillMaxSize())
+                    LoginWindow(modifier = Modifier.fillMaxSize().padding(innerPadding))
                 }
             }
         }

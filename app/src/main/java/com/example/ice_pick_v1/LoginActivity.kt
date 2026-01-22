@@ -1,4 +1,4 @@
-package com.example.ice_pick_v1.ui.activities.login
+package com.example.ice_pick_v1
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -37,7 +37,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.ice_pick_v1.R
 import com.example.ice_pick_v1.ui.theme.Icepickv1Theme
 import com.example.ice_pick_v1.ui.theme.Purple80
 
@@ -49,7 +48,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             Icepickv1Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginWindow(modifier = Modifier.fillMaxSize().padding(innerPadding))
+                    LoginWindow(modifier = Modifier.fillMaxSize())
                 }
             }
         }

@@ -211,6 +211,9 @@ build/
 *.apk
 *.aab
 
+# Android local SDK config (machine-specific)
+local.properties
+
 ###############################################################################
 # FIREBASE (CONFIG + SECRETS)
 #

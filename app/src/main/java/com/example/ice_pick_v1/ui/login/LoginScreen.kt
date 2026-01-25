@@ -1,9 +1,5 @@
 package com.example.ice_pick_v1
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,7 +17,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -37,28 +32,27 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.ice_pick_v1.ui.Screen
 import com.example.ice_pick_v1.ui.theme.Icepickv1Theme
 import com.example.ice_pick_v1.ui.theme.Purple80
 
 //TODO: Swap to LoginActivity and add new MainActivity for splash screen
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Icepickv1Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginWindow(modifier = Modifier.fillMaxSize().padding(innerPadding))
-                }
-            }
-        }
-    }
+@Composable
+fun LoginScreen(navController: NavController) {
+    LoginWindow(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(),
+        navController
+    )
 }
-
 
 @Composable
 fun LoginWindow(
-    modifier: Modifier?
+    modifier: Modifier,
+    navController: NavController
 ) {
     val userName = remember { mutableStateOf("") }
     val userPassword = remember {
@@ -71,32 +65,6 @@ fun LoginWindow(
     )
 
     var AdminLoginToggleState = remember { mutableStateOf(false) }
-
-//    @Composable
-//    fun adminloginToggled(toggled: MutableState<Boolean>) {
-//        if (toggled.value) {
-//            UserBackgrdounCard()
-//            AdminBackgroundCard()
-//        } else {
-//            AdminBackgroundCard()
-//            UserBackgroundCard()
-//        }
-//    }
-
-    @Composable
-    fun AdminLoginToggled(isAdmin: Boolean) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            // Gray user background
-            UserBackgroundCard(
-                modifier = Modifier.alpha(if (isAdmin) 0f else 1f)
-            )
-            // Green admin background
-            AdminBackgroundCard(
-                modifier = Modifier.alpha(if (isAdmin) 1f else 0f)
-            )
-        }
-    }
-
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         AdminLoginToggled(AdminLoginToggleState.value)
@@ -150,14 +118,15 @@ fun LoginWindow(
                         .padding(start = 20.dp, top = 6.dp, end = 20.dp, bottom = 5.dp)
                 ) { Text("Guest") }
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navController.navigate(route = Screen.Dashboard.route)
+                    },
                     colors = ButtonDefaults.outlinedButtonColors(Purple80),
                     modifier = Modifier
                         .height(50.dp)
                         .padding(start = 20.dp, top = 6.dp, end = 20.dp, bottom = 5.dp)
                 ) { Text("Submit") }
             }
-
 
             // SSO Login
             OutlinedCard(
@@ -201,7 +170,20 @@ fun LoginWindow(
             )
         }
     }
+}
 
+@Composable
+fun AdminLoginToggled(isAdmin: Boolean) {
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        // Gray user background
+        UserBackgroundCard(
+            modifier = Modifier.alpha(if (isAdmin) 0f else 1f)
+        )
+        // Green admin background
+        AdminBackgroundCard(
+            modifier = Modifier.alpha(if (isAdmin) 1f else 0f)
+        )
+    }
 }
 
 @Composable
@@ -222,7 +204,6 @@ fun UserBackgroundCard(modifier: Modifier) {
     )
 }
 
-
 @Composable
 fun IcePickLogo(modifier: Modifier) {
     Image(
@@ -235,7 +216,7 @@ fun IcePickLogo(modifier: Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun LoginPreview() {
-    Icepickv1Theme {
-        LoginWindow(Modifier)
+    Icepickv1Theme() {
+        LoginWindow(modifier = Modifier, navController = rememberNavController())
     }
 }

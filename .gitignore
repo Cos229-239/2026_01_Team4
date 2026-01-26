@@ -211,6 +211,9 @@ build/
 *.apk
 *.aab
 
+# Android local SDK config (machine-specific)
+local.properties
+
 ###############################################################################
 # FIREBASE (CONFIG + SECRETS)
 #
@@ -382,6 +385,9 @@ firestore-debug.log
 # - It overrides earlier ignore rules
 # - Think: "Even if we ignored too much, KEEP THESE"
 #
+
+*.properties
+
 ###############################################################################
 
 !gradlew

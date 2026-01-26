@@ -51,6 +51,7 @@ import com.example.ice_pick_v1.ui.theme.Purple80
 @Composable
 fun DashboardScreen(modifier: Modifier, navController: NavController?) {
 
+    // NOTE: Main Container for Screen
     Box(modifier = Modifier) {
         TopLevelSearchBar(
             modifier = Modifier,
@@ -58,6 +59,7 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
             onSearch = { },
         )
 
+        // NOTE: Whole Page Layout
         Column(
             modifier = Modifier
                 .fillMaxSize()

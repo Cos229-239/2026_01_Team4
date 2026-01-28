@@ -42,6 +42,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.example.ice_pick_v1.ui.theme.Green20
+import com.example.ice_pick_v1.ui.theme.Grey60
+import com.example.ice_pick_v1.ui.theme.Grey80
 import com.example.ice_pick_v1.ui.theme.Purple40
 import com.example.ice_pick_v1.ui.theme.Purple80
 
@@ -84,7 +87,9 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                             .widthIn(100.dp)
                             .heightIn(100.dp)
                             .zIndex(1f)
-                            .offset(y = (-0).dp)
+                            .offset(y = (-0).dp),
+                        colors = CardDefaults.cardColors(containerColor =Grey60 )
+
                     ) {}
                     //TODO: QuickProfileCard
                     OutlinedCard(
@@ -93,7 +98,7 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                             .offset(y = 55.dp)
                             .widthIn(165.dp)
                             .heightIn(80.dp),
-                        colors = CardDefaults.cardColors(Purple80)
+                        colors = CardDefaults.cardColors(Grey80)
                     ) {}
                 }
 
@@ -113,9 +118,9 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                             color = Color(0xFFF4EBFF),
                             shape = RoundedCornerShape(size = 8.dp)
                         )
-                        .widthIn(165.dp)
+                        .widthIn(min = 135.dp)
                         .heightIn(135.dp),
-                    colors = CardDefaults.cardColors(Purple80)
+                    colors = CardDefaults.cardColors(Grey80)
                 ) {}
             }
 
@@ -132,12 +137,12 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                     modifier = Modifier
                         .clip(CircleShape)
                         .widthIn(min = 360.dp)
-                        .heightIn(min = 360.dp)
+                        .heightIn(min = 340.dp)
                         .zIndex(1f)
                         .alpha(0.80f),
 
                     colors = CardDefaults.cardColors(
-                        containerColor = Purple80,
+                        containerColor = Grey60,
                         contentColor = Purple40
                     )
                 ) {}
@@ -149,6 +154,9 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                         .width(360.dp)
                         .height(250.dp)
                         .offset(y = 175.dp),
+                    colors = CardDefaults.cardColors(
+                        containerColor = Green20
+                    )
                 ) {}
             }
         }
@@ -181,6 +189,7 @@ fun TopLevelSearchBar(
                 .heightIn(35.dp)
                 .width(250.dp),
 
+
             inputField = {
                 SearchBarDefaults.InputField(
                     query = textFieldState.text.toString(),
@@ -192,6 +201,7 @@ fun TopLevelSearchBar(
                     expanded = expanded,
                     onExpandedChange = { expanded = it },
                     placeholder = { Text("Search") }
+
                 )
             },
             expanded = expanded,

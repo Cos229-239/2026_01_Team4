@@ -152,12 +152,40 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                     onClick = {},
                     modifier = Modifier
                         .width(360.dp)
-                        .height(250.dp)
-                        .offset(y = 175.dp),
+                        .height(275.dp)
+                        .offset(y = 190.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = Green20
                     )
+
+
                 ) {}
+//                Card(
+//                    onClick = {},
+//                    modifier = Modifier
+//                        .width(width = 275.dp)
+//                        .height(height = 45.dp)
+//                     .offset(y = 50.dp),
+//
+//                ){}
+//                Card(
+//                    onClick = {},
+//                    modifier = Modifier
+//                        .width(width = 275.dp)
+//                        .height(height = 45.dp)
+//                        .offset(y = 110.dp),
+//
+//                    ){}
+//                Card(
+//                    onClick = {},
+//                    modifier = Modifier
+//                        .width(width = 275.dp)
+//                        .height(height = 45.dp)
+//                        .offset(y = 170.dp),
+//
+//
+//                    ){}
+
             }
         }
     }
@@ -173,7 +201,8 @@ fun TopLevelSearchBar(
     modifier: Modifier = Modifier,
     textFieldState: TextFieldState,
     onSearch: (String) -> Unit,
-    searchResults: List<String> = mutableListOf<String>()
+    searchResults: List<String> = mutableListOf<String>(),
+
 ) {
     var expanded by rememberSaveable { mutableStateOf(false) }
 
@@ -188,6 +217,18 @@ fun TopLevelSearchBar(
                 .padding(top = 12.dp, bottom = 12.dp)
                 .heightIn(35.dp)
                 .width(250.dp),
+            colors = SearchBarDefaults.colors(
+                containerColor = Color(193, 193, 197, 255),   // background
+                dividerColor = Color.Black,    // bottom divider
+                inputFieldColors = SearchBarDefaults.inputFieldColors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black,
+                    cursorColor = Color.White,
+                    focusedPlaceholderColor = Color.LightGray,
+                    unfocusedPlaceholderColor = Color.Gray
+                )
+            ),
+
 
 
             inputField = {

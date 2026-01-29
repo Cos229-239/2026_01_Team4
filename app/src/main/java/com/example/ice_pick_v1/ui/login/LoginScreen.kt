@@ -50,20 +50,6 @@ fun LoginScreen(navController: NavController) {
       navController
   )}
 
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
-//        setContent {
-//            Icepickv1Theme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    LoginWindow(modifier = Modifier.fillMaxSize())
-//                }
-//            }
-//        }
-//    }
-//>>>>>>> 558037747465688f43d0f8797bf837bbc4cd7143:app/src/main/java/com/example/ice_pick_v1/LoginActivity.kt
-//}
 
 @Composable
 fun LoginWindow(

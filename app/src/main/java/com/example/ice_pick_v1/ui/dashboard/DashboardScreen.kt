@@ -160,31 +160,31 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
 
 
                 ) {}
-//                Card(
-//                    onClick = {},
-//                    modifier = Modifier
-//                        .width(width = 275.dp)
-//                        .height(height = 45.dp)
-//                     .offset(y = 50.dp),
-//
-//                ){}
-//                Card(
-//                    onClick = {},
-//                    modifier = Modifier
-//                        .width(width = 275.dp)
-//                        .height(height = 45.dp)
-//                        .offset(y = 110.dp),
-//
-//                    ){}
-//                Card(
-//                    onClick = {},
-//                    modifier = Modifier
-//                        .width(width = 275.dp)
-//                        .height(height = 45.dp)
-//                        .offset(y = 170.dp),
-//
-//
-//                    ){}
+               Card(
+
+                    modifier = Modifier
+                       .width(width = 275.dp)
+                       .height(height = 45.dp)
+                     .offset(y = 50.dp),
+
+                ){}
+                Card(
+                    onClick = {},
+                    modifier = Modifier
+                        .width(width = 275.dp)
+                        .height(height = 45.dp)
+                        .offset(y = 110.dp),
+
+                    ){}
+               Card(
+                   onClick = {},
+                   modifier = Modifier
+                       .width(width = 275.dp)
+                      .height(height = 45.dp)
+                       .offset(y = 170.dp),
+
+
+                   ){}
 
             }
         }

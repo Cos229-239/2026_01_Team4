@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.ice_pick_v1.LoginScreen
+import com.example.ice_pick_v1.ui.login.LoginScreen
 import com.example.ice_pick_v1.ui.dashboard.DashboardScreen
 import com.example.ice_pick_v1.ui.theme.Icepickv1Theme
 

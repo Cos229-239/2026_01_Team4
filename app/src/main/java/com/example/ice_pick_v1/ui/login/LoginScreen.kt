@@ -1,5 +1,6 @@
-package com.example.ice_pick_v1
+package com.example.ice_pick_v1.ui.login
 
+import com.example.ice_pick_v1.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -39,15 +40,16 @@ import com.example.ice_pick_v1.ui.theme.Icepickv1Theme
 import com.example.ice_pick_v1.ui.theme.Purple80
 
 //TODO: Swap to LoginActivity and add new MainActivity for splash screen
+
 @Composable
 fun LoginScreen(navController: NavController) {
-    LoginWindow(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(),
-        navController
-    )
-}
+   LoginWindow(
+       modifier = Modifier
+           .fillMaxSize()
+          .padding(0.dp),
+      navController
+  )}
+
 
 @Composable
 fun LoginWindow(

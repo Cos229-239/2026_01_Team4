@@ -11,7 +11,9 @@ The IRL social platform for event exploration
 
 ## Member Roles
 ---
-* TBD
+* Build Master: Eric Trinque
+* Software Quality Assurance Analyst: Destiny Goodwin
+* API Integration Specialist: Brandon Krabach
 
 # Resources
 ---

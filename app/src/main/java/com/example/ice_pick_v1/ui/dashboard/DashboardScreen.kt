@@ -146,7 +146,7 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                         contentColor = Purple40
                     )
                 ) {}
-
+                //TODO: Make a card Method to clean up code
                 // TODO: DashEventCard component
                 Card(
                     onClick = {},
@@ -157,8 +157,6 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                     colors = CardDefaults.cardColors(
                         containerColor = Green20
                     )
-
-
                 ) {}
                Card(
 
@@ -174,7 +172,6 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                         .width(width = 275.dp)
                         .height(height = 45.dp)
                         .offset(y = 110.dp),
-
                     ){}
                Card(
                    onClick = {},
@@ -182,8 +179,6 @@ fun DashboardScreen(modifier: Modifier, navController: NavController?) {
                        .width(width = 275.dp)
                       .height(height = 45.dp)
                        .offset(y = 170.dp),
-
-
                    ){}
 
             }

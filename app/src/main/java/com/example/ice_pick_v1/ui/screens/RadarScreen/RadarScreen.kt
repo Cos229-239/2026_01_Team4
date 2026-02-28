@@ -217,16 +217,43 @@ private fun RadarLooksOnlyCanvas(
             .clip(CircleShape)
             .background(cs.surfaceVariant.copy(alpha = 0.35f))
     ) {
+//        Canvas(Modifier.fillMaxSize()) {
+//            blips.forEach { b ->
+//                val base = when (b.type) {
+//                    RadarBlipType.EVENT -> eventColor
+//                    RadarBlipType.PERSON -> personColor
+//                }
+//
+//                // Glow + core
+//                drawCircle(base.copy(alpha = 0.22f), 14f, /* pos */)
+//                drawCircle(base.copy(alpha = 0.85f), 6f,  /* pos */)
+//            }
+//        }
         Canvas(Modifier.fillMaxSize()) {
+            val maxRadius = min(size.width, size.height) / 2f
+            val usableRadius = maxRadius * 0.90f
+
             blips.forEach { b ->
                 val base = when (b.type) {
                     RadarBlipType.EVENT -> eventColor
                     RadarBlipType.PERSON -> personColor
                 }
 
+                // distance normalized to current radar range
+                val t = (b.distanceMiles / rangeMiles).coerceIn(0f, 1f)
+
+                // degrees -> radians
+                val rad = Math.toRadians(b.angleDeg.toDouble())
+
+                // polar -> cartesian (centered)
+                val r = t * usableRadius
+                val x = (kotlin.math.cos(rad) * r).toFloat()
+                val y = (kotlin.math.sin(rad) * r).toFloat()
+                val pos = center + Offset(x, y)
+
                 // Glow + core
-                drawCircle(base.copy(alpha = 0.22f), 14f, /* pos */)
-                drawCircle(base.copy(alpha = 0.85f), 6f,  /* pos */)
+                drawCircle(color = base.copy(alpha = 0.22f), radius = 14f, center = pos)
+                drawCircle(color = base.copy(alpha = 0.85f), radius = 6f, center = pos)
             }
         }
     }

@@ -102,6 +102,71 @@ fun IcePickTopSearchBar(
         OutlinedTextField(
             value = query,
             onValueChange = onQueryChange,
+            placeholder = { Text("Locate", maxLines = 1) },
+            singleLine = true,
+            shape = RoundedCornerShape(IcePickTokens.RadiusPill),
+            colors = fieldColors,
+            modifier = Modifier
+                .weight(1f)
+                .defaultMinSize(minHeight = 56.dp), // <- key fix
+            trailingIcon = {
+                Text(
+                    text = trailingGlyph,
+                    color = IcePickTokens.TopBarHint,
+                    modifier = Modifier.padding(end = 12.dp)
+                )
+            }
+        )
+
+        Spacer(Modifier.width(10.dp))
+
+        Text(
+            text = rightGlyph,
+            color = IcePickTokens.TopBarHint,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(end = 2.dp)
+        )
+    }
+}
+
+/*
+@Composable
+fun IcePickTopSearchBar(
+    query: String,
+    onQueryChange: (String) -> Unit,
+    leftGlyph: String = "◉",
+    rightGlyph: String = "≡",
+    trailingGlyph: String = "⌁",
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = leftGlyph,
+            color = IcePickTokens.TopBarHint,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(start = 2.dp)
+        )
+
+        Spacer(Modifier.width(12.dp))
+
+        val fieldColors = TextFieldDefaults.colors(
+            focusedContainerColor = IcePickTokens.TopBarField,
+            unfocusedContainerColor = IcePickTokens.TopBarField,
+            disabledContainerColor = IcePickTokens.TopBarField,
+            focusedTextColor = IcePickTokens.TopBarText,
+            unfocusedTextColor = IcePickTokens.TopBarText,
+            focusedPlaceholderColor = IcePickTokens.TopBarHint,
+            unfocusedPlaceholderColor = IcePickTokens.TopBarHint,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        )
+
+        OutlinedTextField(
+            value = query,
+            onValueChange = onQueryChange,
             placeholder = { Text("Locate") },
             singleLine = true,
             shape = RoundedCornerShape(IcePickTokens.RadiusPill),
@@ -128,6 +193,7 @@ fun IcePickTopSearchBar(
         )
     }
 }
+*/
 
 @Composable
 fun IcePickProfileHeader(
@@ -157,12 +223,16 @@ fun IcePickProfileHeader(
             elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
             modifier = Modifier
                 .weight(1f)
-                .height(118.dp)
+                .defaultMinSize(minHeight = 118.dp)
         ) {
-            Box(Modifier.fillMaxSize().padding(12.dp)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(12.dp)
+            ) {
                 Column(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                         .padding(end = 26.dp),
                     verticalArrangement = Arrangement.Top
                 ) {
@@ -173,16 +243,17 @@ fun IcePickProfileHeader(
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
+
                     Spacer(Modifier.height(6.dp))
+
                     Text(
                         text = tags,
                         color = IcePickTokens.Ink,
-                        maxLines = 6,
-                        overflow = TextOverflow.Ellipsis
+                        maxLines = Int.MAX_VALUE,
+                        overflow = TextOverflow.Clip
                     )
                 }
 
-                // edit badge placeholder
                 Surface(
                     shape = CircleShape,
                     color = IcePickTokens.Badge,
@@ -199,6 +270,77 @@ fun IcePickProfileHeader(
         }
     }
 }
+
+//@Composable
+//fun IcePickProfileHeader(
+//    name: String,
+//    tags: String,
+//    imageResId: Int = R.drawable.icepick_logo,
+//    modifier: Modifier = Modifier
+//) {
+//    Row(
+//        modifier = modifier.fillMaxWidth(),
+//        verticalAlignment = Alignment.Top
+//    ) {
+//        Image(
+//            painter = painterResource(id = imageResId),
+//            contentDescription = "Profile Picture",
+//            contentScale = ContentScale.Crop,
+//            modifier = Modifier
+//                .size(118.dp)
+//                .clip(CircleShape)
+//        )
+//
+//        Spacer(Modifier.width(14.dp))
+//
+//        Card(
+//            shape = RoundedCornerShape(IcePickTokens.RadiusLg),
+//            colors = CardDefaults.cardColors(containerColor = IcePickTokens.Panel),
+//            elevation = CardDefaults.cardElevation(defaultElevation = 10.dp),
+//            modifier = Modifier
+//                .weight(1f)
+//                .height(118.dp)
+//        ) {
+//            Box(Modifier.fillMaxSize().padding(12.dp)) {
+//                Column(
+//                    modifier = Modifier
+//                        .fillMaxSize()
+//                        .padding(end = 26.dp),
+//                    verticalArrangement = Arrangement.Top
+//                ) {
+//                    Text(
+//                        text = "Name: $name",
+//                        fontWeight = FontWeight.SemiBold,
+//                        color = IcePickTokens.Ink,
+//                        maxLines = 1,
+//                        overflow = TextOverflow.Ellipsis
+//                    )
+//                    Spacer(Modifier.height(6.dp))
+//                    Text(
+//                        text = tags,
+//                        color = IcePickTokens.Ink,
+//                        maxLines = 6,
+//                        overflow = TextOverflow.Ellipsis
+//                    )
+//                }
+//
+//                // edit badge placeholder
+//                Surface(
+//                    shape = CircleShape,
+//                    color = IcePickTokens.Badge,
+//                    shadowElevation = 2.dp,
+//                    modifier = Modifier
+//                        .align(Alignment.TopEnd)
+//                        .size(22.dp)
+//                ) {
+//                    Box(contentAlignment = Alignment.Center) {
+//                        Text(text = "✎", color = IcePickTokens.Ink, textAlign = TextAlign.Center)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 @Composable
 fun IcePickSectionCard(
@@ -291,7 +433,7 @@ fun IcePickMiniBubbleCard(
 fun IcePickPillButton(
     text: String,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {} // still UI-safe; caller can wire later
+    onClick: () -> Unit = {} // Wire later
 ) {
     Button(
         onClick = onClick,
